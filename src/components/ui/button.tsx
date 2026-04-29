@@ -1,4 +1,5 @@
 import { Button as BaseButton } from "@base-ui/react/button";
+import type { JSX } from "react";
 import css from "~/components/ui/button.module.css";
 
 interface ButtonProps extends BaseButton.Props {
@@ -7,7 +8,7 @@ interface ButtonProps extends BaseButton.Props {
 	shape: "rounded" | "square";
 }
 
-export function Button(props: ButtonProps) {
+export function Button(props: ButtonProps): JSX.Element {
 	const { className, variant, size, shape, children, ...rest } = props;
 	return (
 		<BaseButton

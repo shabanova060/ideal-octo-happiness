@@ -1,0 +1,26 @@
+.AvatarRoot {
+  display: grid;
+  place-items: center;
+  font-weight: 400;
+  font-size: 1rem;
+  border-radius: 100%;
+  background-color: var(--ds-gray-300);
+  border: 1px solid var(--ds-gray-300);
+  overflow: hidden;
+  height: 3rem;
+  width: 3rem;
+}
+
+.AvatarImage {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.AvatarFallback {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  width: 100%;
+  font-size: 1rem;
+}
