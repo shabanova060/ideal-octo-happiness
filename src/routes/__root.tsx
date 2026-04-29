@@ -7,6 +7,8 @@ import {
   Scripts,
 } from '@tanstack/react-router'
 
+import "~/theme/globals.css";
+
 export const Route = createRootRoute({
   head: () => ({
     meta: [
@@ -35,7 +37,7 @@ function RootComponent() {
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html>
+    <html lang='en' dir='ltr' data-theme='light'>
       <head>
         <HeadContent />
       </head>
