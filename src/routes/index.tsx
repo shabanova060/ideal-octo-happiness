@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { columns, products } from "~/components/tables/columns";
 import { DataTable } from "~/components/tables/data-table";
 import { TableCell, TableRow } from "~/components/ui/table";
+import { ThemeSelector } from "~/theme/theme-selector";
 
 export const Route = createFileRoute("/")({
 	component: HomePage,
@@ -10,8 +11,9 @@ export const Route = createFileRoute("/")({
 function HomePage() {
 	return (
 		<main>
+			<ThemeSelector />
 			<DataTable
-				caption="Product List - list of products"
+				caption="Product List - list of products (Data Table)"
 				columns={columns}
 				data={products}
 				footer={

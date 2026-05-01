@@ -199,6 +199,7 @@
 body {
   font-family: var(--font-geist-sans);
   font-size: 16px;
+  background-color: var(--ds-background-100);
 }
 
 code {
