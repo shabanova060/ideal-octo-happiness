@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Avatar } from "~/components/ui/avatar";
-import { Button } from "~/components/ui/button";
+import { columns, products } from "~/components/tables/columns";
+import { DataTable } from "~/components/tables/data-table";
+import { TableCell, TableRow } from "~/components/ui/table";
 
 export const Route = createFileRoute("/")({
 	component: HomePage,
@@ -9,17 +10,18 @@ export const Route = createFileRoute("/")({
 function HomePage() {
 	return (
 		<main>
-			<h4>Home Page</h4>
-			<Avatar imageUrl="/avatars/drow-avatar.webp" monogram="DR" />
-			<Button variant="primary" size="medium" shape="rounded">
-				Press Button
-			</Button>
-			<Button variant="secondary" size="medium" shape="rounded">
-				Press Button
-			</Button>
-			<Button variant="tertiary" size="medium" shape="square">
-				Press Button
-			</Button>
+			<DataTable
+				caption="Product List - list of products"
+				columns={columns}
+				data={products}
+				footer={
+					<TableRow>
+						<TableCell colSpan={columns.length}>
+							Total Products in List: {products.length}
+						</TableCell>
+					</TableRow>
+				}
+			/>
 		</main>
 	);
 }

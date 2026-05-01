@@ -205,6 +205,11 @@ code {
   font-family: var(--font-geist-mono);
 }
 
+th,
+td {
+  font-size: 0.875rem;
+}
+
 .container {
   width: 100%;
   margin-left: auto;

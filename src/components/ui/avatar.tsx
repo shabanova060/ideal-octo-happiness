@@ -1,5 +1,4 @@
 import { Avatar as BaseAvatar } from "@base-ui/react/avatar";
-import type { JSX } from "react";
 import css from "~/components/ui/avatar.module.css";
 
 type Char = string;
@@ -12,7 +11,7 @@ interface AvatarProps extends BaseAvatar.Root.Props {
 	height?: number;
 }
 
-export function Avatar(props: AvatarProps): JSX.Element {
+export function Avatar(props: AvatarProps): React.JSX.Element {
 	const { monogram, imageUrl, width = 48, height = 48, ...rest } = props;
 	return (
 		<BaseAvatar.Root className={css.AvatarRoot} {...rest}>
