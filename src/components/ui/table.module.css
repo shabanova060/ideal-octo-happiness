@@ -16,6 +16,7 @@
     0px 2px 2px #0000000a,
     0px 8px 8px -8px #0000000a,
     0 0 0 1px var(--ds-gray-300);
+  background-color: var(--ds-background-200);
 }
 
 .TableCaption {
@@ -31,7 +32,7 @@
 }
 
 .TableBody {
-  background-color: var(--ds-background-100);
+  background-color: var(--ds-background-200);
 }
 
 .TableRow {

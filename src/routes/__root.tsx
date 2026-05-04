@@ -7,7 +7,6 @@ import {
 	Scripts,
 } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { Header } from "~/components/layouts/header";
 import { ThemeProvider } from "~/theme/provider";
 import "~/theme/globals.css";
 
@@ -49,7 +48,6 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 			</head>
 			<body className="body-bg">
 				<ThemeProvider>
-					<Header />
 					{children}
 					<Scripts />
 				</ThemeProvider>

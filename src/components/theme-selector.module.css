@@ -4,7 +4,6 @@
   border: 0.0625rem solid var(--ds-gray-400);
   border-radius: 9999rem;
   position: relative;
-  /* Add padding to create an internal track for the indicator */
   padding: 0.125rem;
 }
 
@@ -26,6 +25,7 @@
   border-radius: 9999rem;
   position: relative;
   cursor: pointer;
+
   color: var(--ds-gray-900);
   transition: color 200ms ease;
 }
@@ -33,7 +33,6 @@
 .ThemeIndicator {
   position: absolute;
   z-index: -1;
-  /* Reset top and height so it fits perfectly inside the padded container */
   top: 0;
   left: 0;
   height: 100%;

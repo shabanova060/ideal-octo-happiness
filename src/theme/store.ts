@@ -5,7 +5,7 @@ export const themeStore = createStore({
 	theme: getInitialTheme(),
 });
 
-export function changeTheme(newTheme: Theme) {
+export function changeTheme(newTheme: Theme): void {
 	localStorage.setItem("theme", newTheme);
 	themeStore.setState((state) => ({ ...state, theme: newTheme }));
 	applyTheme(newTheme);

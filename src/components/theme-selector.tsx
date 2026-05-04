@@ -2,10 +2,9 @@ import { Tabs } from "@base-ui/react/tabs";
 import { useSelector } from "@tanstack/react-store";
 import { MonitorCog, Moon, Sun } from "lucide-react";
 import { useEffect } from "react";
-import type { Theme } from "~/theme/helpers";
+import css from "~/components/theme-selector.module.css";
 import { applyTheme } from "~/theme/helpers";
 import { changeTheme, themeStore } from "~/theme/store";
-import css from "~/theme/theme-selector.module.css";
 
 interface ThemeSelectorProps {
 	className?: string;
@@ -29,7 +28,7 @@ export function ThemeSelector(props: ThemeSelectorProps) {
 		<Tabs.Root
 			className={`${css.ThemeTabs} ${className || ""}`}
 			value={theme}
-			onValueChange={(value) => changeTheme(value as Theme)}
+			onValueChange={(value) => changeTheme(value)}
 		>
 			<Tabs.List className={css.ThemeList}>
 				<Tabs.Tab className={css.ThemeTab} value="system">
