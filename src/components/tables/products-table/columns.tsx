@@ -1,9 +1,12 @@
+import { Link } from "@tanstack/react-router";
 import type { ColumnDef } from "@tanstack/react-table";
 
 export interface Product {
 	id: string;
 	name: string;
+	brandId: string;
 	brand: string;
+	categoryId: string;
 	category: string;
 	price: number;
 	currency: string;
@@ -16,7 +19,9 @@ export const products: Product[] = [
 	{
 		id: "prod-001",
 		name: "Grass-Fed Bio Ribeye Steak",
+		brandId: "br-001",
 		brand: "Nature's Pasture",
+		categoryId: "cat-001",
 		category: "Bio Meat",
 		price: 34.5,
 		currency: "USD",
@@ -27,7 +32,9 @@ export const products: Product[] = [
 	{
 		id: "prod-002",
 		name: "Zero-Proof Botanical Spirit",
+		brandId: "br-002",
 		brand: "Clear Mind Beverage Co.",
+		categoryId: "cat-002",
 		category: "Beverages",
 		price: 28.0,
 		currency: "USD",
@@ -38,7 +45,9 @@ export const products: Product[] = [
 	{
 		id: "prod-003",
 		name: "Organic Free-Range Whole Chicken",
+		brandId: "br-003",
 		brand: "Heritage Farms",
+		categoryId: "cat-001",
 		category: "Bio Meat",
 		price: 22.9,
 		currency: "USD",
@@ -49,7 +58,9 @@ export const products: Product[] = [
 	{
 		id: "prod-004",
 		name: "Sparkling Mineral Water (12-Pack)",
+		brandId: "br-004",
 		brand: "Alpine Springs",
+		categoryId: "cat-002",
 		category: "Beverages",
 		price: 14.99,
 		currency: "USD",
@@ -60,7 +71,9 @@ export const products: Product[] = [
 	{
 		id: "prod-005",
 		name: "Pasture-Raised Bio Lamb Chops",
+		brandId: "br-001",
 		brand: "Nature's Pasture",
+		categoryId: "cat-001",
 		category: "Bio Meat",
 		price: 42.0,
 		currency: "USD",
@@ -77,15 +90,45 @@ export const columns: ColumnDef<Product>[] = [
 	},
 	{
 		accessorKey: "name",
-		header: "Product Name",
+		header: "Name",
+		cell: ({ row }) => {
+			const id = row.original.id;
+			const name = row.getValue("name") as string;
+
+			return (
+				<a href={`/product/${id}`} className="text-blue-600 hover:underline">
+					{name}
+				</a>
+			);
+		},
 	},
 	{
 		accessorKey: "brand",
 		header: "Brand",
+		cell: ({ row }) => {
+			const brandId = row.original.brandId;
+			const brand = row.getValue("brand") as string;
+
+			return (
+				<Link to="/brands/$brandId" params={{ brandId: brandId }}>
+					{brand}
+				</Link>
+			);
+		},
 	},
 	{
 		accessorKey: "category",
 		header: "Category",
+		cell: ({ row }) => {
+			const categoryId = row.original.categoryId;
+			const category = row.getValue("category") as string;
+
+			return (
+				<Link to="/categories/$categoryId" params={{ categoryId: categoryId }}>
+					{category}
+				</Link>
+			);
+		},
 	},
 	{
 		accessorKey: "price",

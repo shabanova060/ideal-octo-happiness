@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 @font-face {
   font-family: "Geist Sans";
   src: url("/fonts/GeistSans.ttf") format("truetype-variations");
@@ -211,6 +213,11 @@ code {
 
 a {
   text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 th,
@@ -329,14 +336,12 @@ td {
 .auth-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #111827;
   margin: 0;
   color: var(--ds-gray-1000);
 }
 
 .auth-description {
   font-size: 0.875rem;
-  color: #4b5563;
   margin: 0;
   color: var(--ds-gray-900);
 }
@@ -357,7 +362,7 @@ td {
 }
 
 .field-input {
-  background: var(--ds-background-100);
+  background: var(--ds-background-200);
   height: 40px;
   color: #000000;
   border-radius: 6px;

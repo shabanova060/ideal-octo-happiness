@@ -1,5 +1,4 @@
 /// <reference types="vite/client" />
-
 import {
 	createRootRoute,
 	HeadContent,
@@ -7,8 +6,8 @@ import {
 	Scripts,
 } from "@tanstack/react-router";
 import type { ReactNode } from "react";
+import tailwindcss from "~/theme/globals.css?url";
 import { ThemeProvider } from "~/theme/provider";
-import "~/theme/globals.css";
 
 export const Route = createRootRoute({
 	head: () => ({
@@ -28,6 +27,7 @@ export const Route = createRootRoute({
 				title: "TanStack Start Starter",
 			},
 		],
+		links: [{ rel: "stylesheet", href: tailwindcss }],
 	}),
 	component: RootComponent,
 });

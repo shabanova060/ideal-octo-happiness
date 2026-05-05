@@ -2,7 +2,7 @@ import { Tabs } from "@base-ui/react/tabs";
 import { useSelector } from "@tanstack/react-store";
 import { MonitorCog, Moon, Sun } from "lucide-react";
 import { useEffect } from "react";
-import css from "~/components/theme-selector.module.css";
+import css from "~/components/theme-selector/styles.module.css";
 import { applyTheme } from "~/theme/helpers";
 import { changeTheme, themeStore } from "~/theme/store";
 

@@ -1,5 +1,5 @@
 import { Button as BaseButton } from "@base-ui/react/button";
-import css from "~/components/ui/button.module.css";
+import css from "~/components/ui/button/styles.module.css";
 
 interface ButtonProps extends BaseButton.Props {
 	variant?: "primary" | "secondary" | "tertiary";

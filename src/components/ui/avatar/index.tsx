@@ -1,5 +1,5 @@
 import { Avatar as BaseAvatar } from "@base-ui/react/avatar";
-import css from "~/components/ui/avatar.module.css";
+import css from "~/components/ui/avatar/styles.module.css";
 
 type Char = string;
 type Monogram = `${Char}${Char}`;

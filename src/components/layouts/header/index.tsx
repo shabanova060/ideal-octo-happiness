@@ -1,5 +1,5 @@
 import type { JSX } from "react";
-import css from "~/components/layouts/header.module.css";
+import css from "~/components/layouts/header/styles.module.css";
 import { Avatar } from "~/components/ui/avatar";
 
 export function Header(): JSX.Element {

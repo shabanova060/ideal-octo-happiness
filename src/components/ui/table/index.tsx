@@ -1,4 +1,4 @@
-import css from "~/components/ui/table.module.css";
+import css from "~/components/ui/table/styles.module.css";
 
 interface TableProps extends React.ComponentProps<"table"> {}
 

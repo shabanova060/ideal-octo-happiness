@@ -18,15 +18,15 @@ import {
 	TableRow,
 } from "~/components/ui/table";
 
-interface DataTableProps<TData, TValue> {
+interface ProductsTableProps<TData, TValue> {
 	columns: ColumnDef<TData, TValue>[];
 	data: TData[];
 	caption?: React.ReactNode;
 	footer?: React.ReactNode;
 }
 
-export function DataTable<TData, TValue>(
-	props: DataTableProps<TData, TValue>,
+export function ProductsTable<TData, TValue>(
+	props: ProductsTableProps<TData, TValue>,
 ): React.JSX.Element {
 	const { columns, data, caption, footer } = props;
 
@@ -73,9 +73,7 @@ export function DataTable<TData, TValue>(
 					))
 				) : (
 					<TableRow>
-						<TableCell colSpan={columns.length} className="h-24 text-center">
-							No results.
-						</TableCell>
+						<TableCell colSpan={columns.length}>No results.</TableCell>
 					</TableRow>
 				)}
 			</TableBody>
