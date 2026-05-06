@@ -6,6 +6,7 @@ import {
 	Scripts,
 } from "@tanstack/react-router";
 import type { ReactNode } from "react";
+import { Header } from "~/components/layouts/header";
 import tailwindcss from "~/theme/globals.css?url";
 import { ThemeProvider } from "~/theme/provider";
 
@@ -48,6 +49,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 			</head>
 			<body className="antialiased bg-white dark:bg-black">
 				<ThemeProvider>
+					<Header />
 					{children}
 					<Scripts />
 				</ThemeProvider>
