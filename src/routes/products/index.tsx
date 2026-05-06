@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { columns, products } from "~/components/tables/products-columns";
 import { ProductsTable } from "~/components/tables/products-table";
+import { columns, products } from "~/components/tables/products-table/columns";
 import { TableCell, TableRow } from "~/components/ui/table";
 
 export const Route = createFileRoute("/products/")({

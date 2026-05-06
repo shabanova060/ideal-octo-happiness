@@ -46,7 +46,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 			<head>
 				<HeadContent />
 			</head>
-			<body className="body-bg">
+			<body className="antialiased bg-white dark:bg-black">
 				<ThemeProvider>
 					{children}
 					<Scripts />

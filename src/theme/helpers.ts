@@ -1,3 +1,6 @@
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
 export type Theme = "system" | "light" | "dark";
 
 export function getInitialTheme(): Theme {
@@ -22,4 +25,8 @@ export function applyTheme(theme: Theme) {
 	if (metaThemeColor) {
 		metaThemeColor.setAttribute("content", isDark ? "#09090b" : "#ffffff");
 	}
+}
+
+export function cn(...inputs: ClassValue[]) {
+	return twMerge(clsx(inputs));
 }
