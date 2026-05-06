@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ThemeSelector } from "~/components/theme-selector";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 import { Button } from "~/components/ui/button";
 
@@ -13,7 +12,6 @@ function ComponentsPage() {
 			<h1 className="font-bold text-4xl text-gray-950 dark:text-gray-50">
 				Components Page
 			</h1>
-			<ThemeSelector className="mt-4 mb-8" />
 			<section className="grid gap-8 mt-8">
 				<h2 className="font-medium text-2xl text-gray-950 dark:text-gray-50">
 					Avatar

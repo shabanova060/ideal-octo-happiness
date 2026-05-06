@@ -5,7 +5,7 @@ export function Header(): React.JSX.Element {
 	return (
 		<header className="flex place-items-center justify-between gap-x-4 border-b border-zinc-200 dark:border-zinc-800 bg-zinc/85 px-4 py-[0.225rem] backdrop-blur-md">
 			<div>
-				<a href="/" className="font-medium text-zinc-950">
+				<a href="/" className="font-medium text-zinc-950 dark:text-zinc-50">
 					Dashboard Logo
 				</a>
 			</div>

@@ -10,6 +10,7 @@ export function Table(props: TableProps): React.JSX.Element {
 		<div className="relative w-full overflow-auto rounded-md border border-gray-200 bg-white">
 			<table
 				className={cn("w-full caption-top text-sm text-gray-900", className)}
+				data-slot="table"
 				{...otherProps}
 			>
 				{children}
@@ -26,6 +27,7 @@ export function TableHeader(props: TableHeaderProps): React.JSX.Element {
 	return (
 		<thead
 			className={cn("[&_tr]:border-b [&_tr]:border-gray-200", className)}
+			data-slot="table-header"
 			{...otherProps}
 		>
 			{children}
@@ -41,6 +43,7 @@ export function TableBody(props: TableBodyProps): React.JSX.Element {
 	return (
 		<tbody
 			className={cn("[&_tr:last-child]:border-0", className)}
+			data-slot="table-body"
 			{...otherProps}
 		>
 			{children}
@@ -59,6 +62,7 @@ export function TableFooter(props: TableFooterProps): React.JSX.Element {
 				"border-t border-gray-200 bg-gray-50 font-medium [&>tr]:last:border-b-0",
 				className,
 			)}
+			data-slot="table-footer"
 			{...otherProps}
 		>
 			{children}
@@ -77,6 +81,7 @@ export function TableRow(props: TableRowProps): React.JSX.Element {
 				"border-b border-gray-200 transition-colors hover:bg-gray-50 data-[state=selected]:bg-gray-100",
 				className,
 			)}
+			data-slot="table-row"
 			{...otherProps}
 		>
 			{children}
@@ -95,6 +100,7 @@ export function TableHead(props: TableHeadProps): React.JSX.Element {
 				"h-12 px-4 text-left align-middle font-medium text-gray-500 [&:has([role=checkbox])]:pr-0",
 				className,
 			)}
+			data-slot="table-header"
 			{...otherProps}
 		>
 			{children}
@@ -113,6 +119,7 @@ export function TableCell(props: TableCellProps): React.JSX.Element {
 				"p-4 align-middle [&:has([role=checkbox])]:pr-0",
 				className,
 			)}
+			data-slot="table-cell"
 			{...otherProps}
 		>
 			{children}
@@ -128,6 +135,7 @@ export function TableCaption(props: TableCaptionProps): React.JSX.Element {
 	return (
 		<caption
 			className={cn("mt-4 text-sm text-gray-500", className)}
+			data-slot="table-caption"
 			{...otherProps}
 		>
 			{children}

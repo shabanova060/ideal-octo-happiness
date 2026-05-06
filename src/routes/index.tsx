@@ -7,9 +7,12 @@ export const Route = createFileRoute("/")({
 
 function HomePage() {
 	return (
-		<main>
+		<main className="mx-auto container mt-16">
 			<a href="/login">
 				<Button>Log In</Button>
+			</a>
+			<a href="/components">
+				<Button variant="secondary">Components</Button>
 			</a>
 		</main>
 	);
