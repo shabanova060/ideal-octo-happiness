@@ -1,20 +1,34 @@
+import { Link } from "@tanstack/react-router";
 import { ThemeSelector } from "~/components/theme-selector";
-import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 
 export function Header(): React.JSX.Element {
+
 	return (
-		<header className="flex place-items-center justify-between gap-x-4 border-b border-zinc-200 dark:border-zinc-800 bg-zinc/85 px-4 py-[0.225rem] backdrop-blur-md">
-			<div>
-				<a href="/" className="font-medium text-zinc-950 dark:text-zinc-50">
-					Dashboard Logo
-				</a>
+		<header className="border-b border-slate-200 bg-white shadow dark:border-slate-800 dark:bg-slate-900">
+			<div className="container mx-auto grid grid-flow-col items-center justify-between px-4 py-3">
+				<div>
+					<Link to="/" className="text-lg font-bold tracking-tight text-slate-900 dark:text-slate-50">
+						Dashboard Logo
+					</Link>
+				</div>
+				<nav>
+					<ul className="grid grid-flow-col gap-x-8">
+						<li>
+							<Link className="font-medium text-slate-600 transition-colors hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50" to="/components">Components</Link>
+						</li>
+						<li>
+							<Link className="font-medium text-slate-600 transition-colors hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50" to="/products">Products</Link>
+						</li>
+						<li>
+							<Link className="font-medium text-slate-600 transition-colors hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50" to="/categories">Categories</Link>
+						</li>
+						<li>
+							<Link className="font-medium text-slate-600 transition-colors hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50" to="/brands">Brands</Link>
+						</li>
+					</ul>
+				</nav>
+				<ThemeSelector />
 			</div>
-			<nav></nav>
-			<ThemeSelector />
-			<Avatar>
-				<AvatarImage src="/avatars/drow-avatar.webp" width="48" height="48" />
-				<AvatarFallback>DR</AvatarFallback>
-			</Avatar>
 		</header>
 	);
 }

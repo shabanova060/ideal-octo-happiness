@@ -5,8 +5,6 @@ import {
 	Outlet,
 	Scripts,
 } from "@tanstack/react-router";
-import type { ReactNode } from "react";
-import { Header } from "~/components/layouts/header";
 import tailwindcss from "~/theme/globals.css?url";
 import { ThemeProvider } from "~/theme/provider";
 
@@ -41,15 +39,20 @@ function RootComponent() {
 	);
 }
 
-function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
+interface RootDocumentProps {
+	children: React.ReactNode;
+}
+
+function RootDocument(props: Readonly<RootDocumentProps>) {
+	const { children } = props;
+
 	return (
 		<html lang="en" dir="ltr" suppressHydrationWarning>
 			<head>
 				<HeadContent />
 			</head>
-			<body className="antialiased bg-white dark:bg-black">
+			<body className="antialiased bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50">
 				<ThemeProvider>
-					<Header />
 					{children}
 					<Scripts />
 				</ThemeProvider>

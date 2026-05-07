@@ -7,49 +7,51 @@ export const Route = createFileRoute("/login/")({
 	component: LoginPage,
 });
 
-function LoginPage() {
+function LoginPage(): React.JSX.Element {
 	return (
-		<main className="grid min-h-screen grid-cols-1 md:grid-cols-2">
-			<section className="grid place-items-center bg-white p-8">
+		<main className="grid min-h-screen grid-cols-1 md:grid-cols-2 bg-slate-50 dark:bg-slate-950">
+			<section className="grid place-items-center bg-white p-8 dark:bg-slate-900">
 				<article className="grid w-full max-w-sm gap-8">
 					<header className="grid gap-2 text-center">
-						<h1 className="m-0 text-2xl font-bold text-zinc-950">
+						<h1 className="m-0 text-2xl font-bold text-slate-950 dark:text-slate-50">
 							Admin Portal
 						</h1>
-						<p className="m-0 text-sm text-zinc-600">
+						<p className="m-0 text-sm text-slate-600 dark:text-slate-400">
 							Sign up to access the administrative dashboard.
 						</p>
 					</header>
 					<Form className="grid gap-y-4">
 						<Field.Root className="grid gap-2">
-							<Field.Label className="text-[13px] text-zinc-600">
+							<Field.Label className="text-[13px] text-slate-600 dark:text-slate-400">
 								E-mail address
 							</Field.Label>
 							<Field.Control
 								required
+								type="email"
 								placeholder="Required"
-								className="h-10 rounded-md border-0 bg-zinc-50 px-4 text-black shadow-[0_0_0_1px_var(--color-zinc-300)] transition-shadow duration-150 ease-in-out focus-within:outline-none focus-within:[&:not([data-invalid])]:shadow-[0_0_0_1px_#00000057,0_0_0_4px_#00000029] focus:data-invalid:shadow-[0_0_0_1px_var(--color-red-500),0_0_0_4px_var(--color-red-200)]"
+								className="h-10 rounded-md border border-slate-200 bg-slate-50 px-4 text-slate-900 transition-all focus-within:outline-none focus-within:ring-2 focus-within:ring-slate-400 focus-within:ring-offset-2 data-invalid:border-red-500 data-invalid:focus-within:ring-red-500 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50 dark:focus-within:ring-slate-600 dark:focus-within:ring-offset-slate-900 dark:data-invalid:border-red-500 dark:data-invalid:focus-within:ring-red-400"
 							/>
 
 							<Field.Error
-								className="text-sm text-red-500"
+								className="text-sm text-red-500 dark:text-red-400"
 								match="valueMissing"
 							>
 								Please enter your email
 							</Field.Error>
 						</Field.Root>
 						<Field.Root className="grid gap-2">
-							<Field.Label className="text-[13px] text-zinc-600">
+							<Field.Label className="text-[13px] text-slate-600 dark:text-slate-400">
 								Password
 							</Field.Label>
 							<Field.Control
 								required
+								type="password"
 								placeholder="Required"
-								className="h-10 rounded-md border-0 bg-zinc-50 px-4 text-black shadow-[0_0_0_1px_var(--color-zinc-300)] transition-shadow duration-150 ease-in-out focus-within:outline-none focus-within:[&:not([data-invalid])]:shadow-[0_0_0_1px_#00000057,0_0_0_4px_#00000029] focus:data-invalid:shadow-[0_0_0_1px_var(--color-red-500),0_0_0_4px_var(--color-red-200)]"
+								className="h-10 rounded-md border border-slate-200 bg-slate-50 px-4 text-slate-900 transition-all focus-within:outline-none focus-within:ring-2 focus-within:ring-slate-400 focus-within:ring-offset-2 data-invalid:border-red-500 data-invalid:focus-within:ring-red-500 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50 dark:focus-within:ring-slate-600 dark:focus-within:ring-offset-slate-900 dark:data-invalid:border-red-500 dark:data-invalid:focus-within:ring-red-400"
 							/>
 
 							<Field.Error
-								className="text-sm text-red-500"
+								className="text-sm text-red-500 dark:text-red-400"
 								match="valueMissing"
 							>
 								Please enter your password

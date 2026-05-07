@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 import { Button } from "~/components/ui/button";
 
-export const Route = createFileRoute("/components/")({
+export const Route = createFileRoute("/_dashboard/components/")({
 	component: ComponentsPage,
 });
 
@@ -53,6 +53,7 @@ function ComponentsPage() {
 				<div className="grid grid-flow-col auto-cols-min gap-6">
 					<Button variant="primary">Click me</Button>
 					<Button variant="destructive">Click me</Button>
+					<Button variant="outline">Click me</Button>
 					<Button variant="secondary">Click me</Button>
 					<Button variant="ghost">Click me</Button>
 					<Button variant="link">Click me</Button>
