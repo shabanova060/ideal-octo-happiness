@@ -1,15 +1,14 @@
 "use client";
 
-import * as React from "react"; // change 1
-
 import {
 	type ColumnDef,
-	type SortingState, // change 2
 	flexRender,
 	getCoreRowModel,
-	getSortedRowModel, // change 3
+	getSortedRowModel,
+	type SortingState,
 	useReactTable,
 } from "@tanstack/react-table";
+import React from "react";
 
 import {
 	Table,
@@ -41,13 +40,11 @@ export function ProductsTable<TData, TValue>(
 		columns,
 		getCoreRowModel: getCoreRowModel(),
 
-		//change 5
 		onSortingChange: setSorting,
 		getSortedRowModel: getSortedRowModel(),
 		state: {
 			sorting,
 		},
-
 	});
 
 	return (
@@ -94,6 +91,4 @@ export function ProductsTable<TData, TValue>(
 			{footer && <TableFooter>{footer}</TableFooter>}
 		</Table>
 	);
-}
-
 }
