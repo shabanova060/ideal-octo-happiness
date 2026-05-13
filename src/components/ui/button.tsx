@@ -1,3 +1,4 @@
+import { Button as BaseButton } from "@base-ui/react/button";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "~/theme/helpers";
 
@@ -33,25 +34,22 @@ const buttonVariants = cva(
 );
 
 export interface ButtonProps
-	extends React.ComponentProps<"button">,
-	VariantProps<typeof buttonVariants> { }
+	extends BaseButton.Props,
+		VariantProps<typeof buttonVariants> {}
 
 export function Button(props: ButtonProps): React.JSX.Element {
 	const {
 		className,
 		variant = "primary",
 		size = "medium",
-		children,
 		...otherProps
 	} = props;
 
 	return (
-		<button
+		<BaseButton
 			className={cn(buttonVariants({ variant, size, className }))}
 			data-slot="button"
 			{...otherProps}
-		>
-			{children}
-		</button>
+		/>
 	);
 }

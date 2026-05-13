@@ -1,10 +1,10 @@
 import { Avatar as BaseAvatar } from "@base-ui/react/avatar";
 import { cn } from "~/theme/helpers";
 
-export interface AvatarProps extends BaseAvatar.Root.Props { }
+export interface AvatarProps extends BaseAvatar.Root.Props {}
 
 export function Avatar(props: AvatarProps): React.JSX.Element {
-	const { children, className, ...otherProps } = props;
+	const { className, ...otherProps } = props;
 
 	return (
 		<BaseAvatar.Root
@@ -14,13 +14,11 @@ export function Avatar(props: AvatarProps): React.JSX.Element {
 			)}
 			data-slot="avatar"
 			{...otherProps}
-		>
-			{children}
-		</BaseAvatar.Root>
+		/>
 	);
 }
 
-export interface AvatarImageProps extends BaseAvatar.Image.Props { }
+export interface AvatarImageProps extends BaseAvatar.Image.Props {}
 
 export function AvatarImage(props: AvatarImageProps): React.JSX.Element {
 	const { className, ...otherProps } = props;
@@ -34,10 +32,10 @@ export function AvatarImage(props: AvatarImageProps): React.JSX.Element {
 	);
 }
 
-export interface AvatarFallbackProps extends BaseAvatar.Fallback.Props { }
+export interface AvatarFallbackProps extends BaseAvatar.Fallback.Props {}
 
 export function AvatarFallback(props: AvatarFallbackProps): React.JSX.Element {
-	const { children, className, ...otherProps } = props;
+	const { className, ...otherProps } = props;
 
 	return (
 		<BaseAvatar.Fallback
@@ -47,8 +45,6 @@ export function AvatarFallback(props: AvatarFallbackProps): React.JSX.Element {
 			)}
 			data-slot="avatar-fallback"
 			{...otherProps}
-		>
-			{children}
-		</BaseAvatar.Fallback>
+		/>
 	);
 }

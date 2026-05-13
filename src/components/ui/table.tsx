@@ -1,7 +1,7 @@
 import type * as React from "react";
 import { cn } from "~/theme/helpers";
 
-export interface TableProps extends React.ComponentProps<"table"> { }
+export interface TableProps extends React.ComponentProps<"table"> {}
 
 export function Table(props: TableProps): React.JSX.Element {
 	const { className, children, ...otherProps } = props;
@@ -9,7 +9,10 @@ export function Table(props: TableProps): React.JSX.Element {
 	return (
 		<div className="relative w-full overflow-auto rounded-md border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
 			<table
-				className={cn("w-full caption-top text-sm text-slate-900 dark:text-slate-50", className)}
+				className={cn(
+					"w-full caption-top text-sm text-slate-900 dark:text-slate-50",
+					className,
+				)}
 				data-slot="table"
 				{...otherProps}
 			>
@@ -19,42 +22,41 @@ export function Table(props: TableProps): React.JSX.Element {
 	);
 }
 
-export interface TableHeaderProps extends React.ComponentProps<"thead"> { }
+export interface TableHeaderProps extends React.ComponentProps<"thead"> {}
 
 export function TableHeader(props: TableHeaderProps): React.JSX.Element {
-	const { className, children, ...otherProps } = props;
+	const { className, ...otherProps } = props;
 
 	return (
 		<thead
-			className={cn("[&_tr]:border-b [&_tr]:border-slate-200 dark:[&_tr]:border-slate-800", className)}
+			className={cn(
+				"[&_tr]:border-b [&_tr]:border-slate-200 dark:[&_tr]:border-slate-800",
+				className,
+			)}
 			data-slot="table-header"
 			{...otherProps}
-		>
-			{children}
-		</thead>
+		/>
 	);
 }
 
-export interface TableBodyProps extends React.ComponentProps<"tbody"> { }
+export interface TableBodyProps extends React.ComponentProps<"tbody"> {}
 
 export function TableBody(props: TableBodyProps): React.JSX.Element {
-	const { className, children, ...otherProps } = props;
+	const { className, ...otherProps } = props;
 
 	return (
 		<tbody
 			className={cn("[&_tr:last-child]:border-0", className)}
 			data-slot="table-body"
 			{...otherProps}
-		>
-			{children}
-		</tbody>
+		/>
 	);
 }
 
-export interface TableFooterProps extends React.ComponentProps<"tfoot"> { }
+export interface TableFooterProps extends React.ComponentProps<"tfoot"> {}
 
 export function TableFooter(props: TableFooterProps): React.JSX.Element {
-	const { className, children, ...otherProps } = props;
+	const { className, ...otherProps } = props;
 
 	return (
 		<tfoot
@@ -64,16 +66,14 @@ export function TableFooter(props: TableFooterProps): React.JSX.Element {
 			)}
 			data-slot="table-footer"
 			{...otherProps}
-		>
-			{children}
-		</tfoot>
+		/>
 	);
 }
 
-export interface TableRowProps extends React.ComponentProps<"tr"> { }
+export interface TableRowProps extends React.ComponentProps<"tr"> {}
 
 export function TableRow(props: TableRowProps): React.JSX.Element {
-	const { className, children, ...otherProps } = props;
+	const { className, ...otherProps } = props;
 
 	return (
 		<tr
@@ -83,62 +83,54 @@ export function TableRow(props: TableRowProps): React.JSX.Element {
 			)}
 			data-slot="table-row"
 			{...otherProps}
-		>
-			{children}
-		</tr>
+		/>
 	);
 }
 
-export interface TableHeadProps extends React.ComponentProps<"th"> { }
+export interface TableHeadProps extends React.ComponentProps<"th"> {}
 
 export function TableHead(props: TableHeadProps): React.JSX.Element {
-	const { className, children, ...otherProps } = props;
+	const { className, ...otherProps } = props;
 
 	return (
 		<th
 			className={cn(
-				"h-12 px-4 text-left align-middle font-medium text-slate-500 dark:text-slate-400 [&:has([role=checkbox])]:pr-0",
+				"h-12 px-4 text-left align-middle font-medium text-slate-500 dark:text-slate-400 has-[[role=checkbox]]:pr-0",
 				className,
 			)}
 			data-slot="table-header"
 			{...otherProps}
-		>
-			{children}
-		</th>
+		/>
 	);
 }
 
-export interface TableCellProps extends React.ComponentProps<"td"> { }
+export interface TableCellProps extends React.ComponentProps<"td"> {}
 
 export function TableCell(props: TableCellProps): React.JSX.Element {
-	const { className, children, ...otherProps } = props;
+	const { className, ...otherProps } = props;
 
 	return (
 		<td
-			className={cn(
-				"p-4 align-middle [&:has([role=checkbox])]:pr-0",
-				className,
-			)}
+			className={cn("p-4 align-middle has-[[role=checkbox]]:pr-0", className)}
 			data-slot="table-cell"
 			{...otherProps}
-		>
-			{children}
-		</td>
+		/>
 	);
 }
 
-export interface TableCaptionProps extends React.ComponentProps<"caption"> { }
+export interface TableCaptionProps extends React.ComponentProps<"caption"> {}
 
 export function TableCaption(props: TableCaptionProps): React.JSX.Element {
-	const { className, children, ...otherProps } = props;
+	const { className, ...otherProps } = props;
 
 	return (
 		<caption
-			className={cn("mt-4 text-sm text-slate-500 dark:text-slate-400", className)}
+			className={cn(
+				"mt-4 text-sm text-slate-500 dark:text-slate-400",
+				className,
+			)}
 			data-slot="table-caption"
 			{...otherProps}
-		>
-			{children}
-		</caption>
+		/>
 	);
 }
