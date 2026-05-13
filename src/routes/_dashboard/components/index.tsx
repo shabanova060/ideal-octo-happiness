@@ -15,7 +15,7 @@ export const Route = createFileRoute("/_dashboard/components/")({
 
 function ComponentsPage() {
 	return (
-		<main className="p-4">
+		<main className="container mx-auto px-4">
 			<h1 className="font-bold text-4xl text-gray-950 dark:text-gray-50">
 				Components Page
 			</h1>

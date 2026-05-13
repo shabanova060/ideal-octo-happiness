@@ -1,7 +1,5 @@
-import { Field } from "@base-ui/react/field";
-import { Form } from "@base-ui/react/form";
 import { createFileRoute } from "@tanstack/react-router";
-import { Button } from "~/components/ui/button";
+import { LoginForm } from "~/components/forms/login-form";
 
 export const Route = createFileRoute("/login/")({
 	component: LoginPage,
@@ -20,52 +18,7 @@ function LoginPage(): React.JSX.Element {
 							Sign up to access the administrative dashboard.
 						</p>
 					</header>
-					<Form className="grid gap-y-4">
-						<Field.Root className="grid gap-2">
-							<Field.Label className="text-[13px] text-slate-600 dark:text-slate-400">
-								E-mail address
-							</Field.Label>
-							<Field.Control
-								required
-								type="email"
-								placeholder="Required"
-								className="h-10 rounded-md border border-slate-200 bg-slate-50 px-4 text-slate-900 transition-all focus-within:outline-none focus-within:ring-2 focus-within:ring-slate-400 focus-within:ring-offset-2 data-invalid:border-red-500 data-invalid:focus-within:ring-red-500 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50 dark:focus-within:ring-slate-600 dark:focus-within:ring-offset-slate-900 dark:data-invalid:border-red-500 dark:data-invalid:focus-within:ring-red-400"
-							/>
-
-							<Field.Error
-								className="text-sm text-red-500 dark:text-red-400"
-								match="valueMissing"
-							>
-								Please enter your email
-							</Field.Error>
-						</Field.Root>
-						<Field.Root className="grid gap-2">
-							<Field.Label className="text-[13px] text-slate-600 dark:text-slate-400">
-								Password
-							</Field.Label>
-							<Field.Control
-								required
-								type="password"
-								placeholder="Required"
-								className="h-10 rounded-md border border-slate-200 bg-slate-50 px-4 text-slate-900 transition-all focus-within:outline-none focus-within:ring-2 focus-within:ring-slate-400 focus-within:ring-offset-2 data-invalid:border-red-500 data-invalid:focus-within:ring-red-500 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50 dark:focus-within:ring-slate-600 dark:focus-within:ring-offset-slate-900 dark:data-invalid:border-red-500 dark:data-invalid:focus-within:ring-red-400"
-							/>
-
-							<Field.Error
-								className="text-sm text-red-500 dark:text-red-400"
-								match="valueMissing"
-							>
-								Please enter your password
-							</Field.Error>
-						</Field.Root>
-						<Button
-							className="mt-6"
-							type="submit"
-							size="medium"
-							variant="primary"
-						>
-							Log In
-						</Button>
-					</Form>
+					<LoginForm />
 				</article>
 			</section>
 

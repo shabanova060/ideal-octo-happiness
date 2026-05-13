@@ -6,7 +6,7 @@ export async function checkEmailAvailability(email: string): Promise<boolean> {
 	const result = await Bun.sql<EmailAvailabilityResult[]>`
     SELECT EXISTS (
       SELECT 1
-      FROM users
+      FROM admins
       WHERE email = ${email}
     ) as exists
   `;

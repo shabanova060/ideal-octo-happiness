@@ -29,7 +29,7 @@ export function TabsList(props: TabsListProps) {
 	return (
 		<BaseTabs.List
 			className={cn(
-				"bg-slate-200 relative w-fit rounded-lg z-0 px-1",
+				"bg-slate-200 dark:bg-slate-800 relative w-fit rounded-lg z-0 px-1",
 				className,
 			)}
 			data-slot="tabs-list"
@@ -61,7 +61,7 @@ export function TabsIndicator(props: TabsIndicatorProps) {
 	return (
 		<BaseTabs.Indicator
 			className={cn(
-				"absolute -z-10 rounded-lg top-1/2 left-0 h-6 w-(--active-tab-width) translate-x-(--active-tab-left) -translate-y-1/2 bg-slate-100 transition-all",
+				"absolute -z-10 rounded-lg top-1/2 left-0 h-6 w-(--active-tab-width) translate-x-(--active-tab-left) -translate-y-1/2 bg-slate-100 dark:bg-slate-900 transition-all",
 				className,
 			)}
 			data-slot="tabs-indicator"
