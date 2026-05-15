@@ -11,7 +11,7 @@ export function hashToken(token: string): string {
 	return encodeHexLowerCase(hash);
 }
 
-export async function createSessionToken(): Promise<string> {
+export function createSessionToken(): string {
 	const token = new Uint8Array(32);
 	crypto.getRandomValues(token);
 	return encodeBase32NoPadding(token);

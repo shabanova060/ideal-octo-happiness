@@ -1,4 +1,5 @@
 import { hashPassword } from "~/auth/password";
+import { createRecoveryCode } from "~/auth/utils";
 
 /**
  * Resets the admin-related tables and seeds a primary admin user.
@@ -25,6 +26,7 @@ export async function seedDatabase() {
       email VARCHAR(254) NOT NULL UNIQUE,
       password_hash TEXT NOT NULL,
       email_verified BOOLEAN DEFAULT FALSE,
+      recovery_code BYTEA NOT NULL,
       updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
       created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
     )
@@ -61,10 +63,12 @@ export async function seedDatabase() {
 	// 4. Seed Admin User
 	const adminEmail = "admin@example.com";
 	const hashedPassword = await hashPassword("your-secure-password");
+	const emailVerified = true;
+	const recoveryCode = createRecoveryCode();
 
 	await Bun.sql`
-    INSERT INTO admins (email, password_hash, email_verified)
-    VALUES (${adminEmail}, ${hashedPassword}, TRUE)
+    INSERT INTO admins (email, password_hash, email_verified, recovery_code)
+    VALUES (${adminEmail}, ${hashedPassword}, ${emailVerified}, ${recoveryCode})
   `;
 
 	console.log("Database reset and admin user seeded successfully.");

@@ -103,13 +103,12 @@ export async function insertAdminSession(
 	adminId: string,
 	tokenHash: string,
 	expiresAt: Date,
-	twoFactorVerified: boolean,
 ): Promise<InsertedSession> {
 	const expiresAtString = expiresAt.toISOString();
 
 	const result = await Bun.sql`
     INSERT INTO admin_sessions (admin_id, token_hash, expires_at, two_factor_verified)
-    VALUES (${adminId}, ${tokenHash}, ${expiresAtString}, ${twoFactorVerified})
+    VALUES (${adminId}, ${tokenHash}, ${expiresAtString})
     RETURNING admin_id, token_hash, expires_at, two_factor_verified
   `;
 

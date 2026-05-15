@@ -9,7 +9,7 @@ function LoginPage(): React.JSX.Element {
 	return (
 		<main className="grid min-h-screen grid-cols-1 md:grid-cols-2 bg-slate-50 dark:bg-slate-950">
 			<section className="grid place-items-center bg-white p-8 dark:bg-slate-900">
-				<article className="grid w-full max-w-sm gap-8">
+				<article className="grid w-full max-w-sm gap-4">
 					<header className="grid gap-2 text-center">
 						<h1 className="m-0 text-2xl font-bold text-slate-950 dark:text-slate-50">
 							Admin Portal
