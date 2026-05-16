@@ -11,6 +11,7 @@ export function OTPField(props: OTPFieldProps) {
 				"grid w-full auto-cols-max grid-flow-col gap-2 sm:gap-3",
 				className,
 			)}
+			data-slot="otp-field"
 			{...otherProps}
 		/>
 	);
@@ -29,6 +30,7 @@ export function OTPFieldInput(props: OTPFieldInputProps) {
 				"dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 dark:focus:border-indigo-400 dark:focus:bg-indigo-950/30 dark:focus:ring-indigo-400/20",
 				className,
 			)}
+			data-slot="otp-field-input"
 			{...otherProps}
 		/>
 	);
@@ -44,6 +46,7 @@ export function OTPFieldSeparator(props: OTPFieldSeparatorProps) {
 				"grid min-w-4 place-items-center font-bold text-slate-400 dark:text-slate-600",
 				className,
 			)}
+			data-slot="otp-field-separator"
 			{...otherProps}
 		/>
 	);

@@ -12,6 +12,7 @@ export function Fieldset(props: FieldsetProps) {
 				"grid w-full gap-5 rounded-xl border-2 border-slate-100 bg-white p-6 pt-5 shadow-sm dark:border-slate-800 dark:bg-slate-900/30",
 				className,
 			)}
+			data-slot="fieldset"
 			{...otherProps}
 		/>
 	);
@@ -28,6 +29,7 @@ export function FieldsetLegend(props: FieldsetLegendProps) {
 				"-ml-1 rounded-lg bg-indigo-50 px-3 py-1 text-sm font-bold tracking-tight text-indigo-700 shadow-sm ring-1 ring-indigo-200/50 dark:bg-slate-900 dark:text-indigo-400 dark:ring-slate-700",
 				className,
 			)}
+			data-slot="fieldset-legend"
 			{...otherProps}
 		/>
 	);
