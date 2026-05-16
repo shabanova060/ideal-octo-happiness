@@ -7,7 +7,10 @@ export function OTPField(props: OTPFieldProps) {
 	const { className, ...otherProps } = props;
 	return (
 		<BaseOTPField.Root
-			className={cn("grid w-full auto-cols-max grid-flow-col gap-2", className)}
+			className={cn(
+				"grid w-full auto-cols-max grid-flow-col gap-2 sm:gap-3",
+				className,
+			)}
 			{...otherProps}
 		/>
 	);
@@ -20,7 +23,10 @@ export function OTPFieldInput(props: OTPFieldInputProps) {
 	return (
 		<BaseOTPField.Input
 			className={cn(
-				"box-border m-0 h-11 w-10 rounded-lg border border-slate-300 bg-transparent text-center font-inherit text-lg font-medium text-slate-900 outline-none focus:outline-solid focus:outline-2 focus:-outline-offset-1 focus:outline-slate-800 dark:border-slate-600 dark:text-slate-100 dark:focus:outline-slate-400",
+				"box-border m-0 h-14 w-12 sm:h-16 sm:w-14 rounded-xl border-2 border-slate-200 bg-white text-center font-inherit text-2xl font-bold text-slate-900 shadow-sm transition-all duration-200 outline-none",
+				"hover:border-indigo-300 dark:hover:border-slate-500",
+				"focus:border-indigo-500 focus:bg-indigo-50/50 focus:ring-4 focus:ring-indigo-500/20 focus:-outline-offset-1",
+				"dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 dark:focus:border-indigo-400 dark:focus:bg-indigo-950/30 dark:focus:ring-indigo-400/20",
 				className,
 			)}
 			{...otherProps}
@@ -35,7 +41,7 @@ export function OTPFieldSeparator(props: OTPFieldSeparatorProps) {
 	return (
 		<BaseOTPField.Separator
 			className={cn(
-				"grid w-4 place-items-center text-slate-500 dark:text-slate-400",
+				"grid min-w-4 place-items-center font-bold text-slate-400 dark:text-slate-600",
 				className,
 			)}
 			{...otherProps}

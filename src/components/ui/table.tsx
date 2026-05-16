@@ -7,17 +7,19 @@ export function Table(props: TableProps): React.JSX.Element {
 	const { className, children, ...otherProps } = props;
 
 	return (
-		<div className="relative w-full overflow-auto rounded-md border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
-			<table
-				className={cn(
-					"w-full caption-top text-sm text-slate-900 dark:text-slate-50",
-					className,
-				)}
-				data-slot="table"
-				{...otherProps}
-			>
-				{children}
-			</table>
+		<div className="relative w-full overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
+			<div className="overflow-x-auto">
+				<table
+					className={cn(
+						"w-full caption-top text-sm text-slate-700 dark:text-slate-300",
+						className,
+					)}
+					data-slot="table"
+					{...otherProps}
+				>
+					{children}
+				</table>
+			</div>
 		</div>
 	);
 }
@@ -30,7 +32,7 @@ export function TableHeader(props: TableHeaderProps): React.JSX.Element {
 	return (
 		<thead
 			className={cn(
-				"[&_tr]:border-b [&_tr]:border-slate-200 dark:[&_tr]:border-slate-800",
+				"bg-slate-50/50 dark:bg-slate-950/50 [&_tr]:border-b [&_tr]:border-slate-200 dark:[&_tr]:border-slate-800",
 				className,
 			)}
 			data-slot="table-header"
@@ -61,7 +63,7 @@ export function TableFooter(props: TableFooterProps): React.JSX.Element {
 	return (
 		<tfoot
 			className={cn(
-				"border-t border-slate-200 bg-slate-50 font-medium [&>tr]:last:border-b-0 dark:border-slate-800 dark:bg-slate-900/50",
+				"border-t border-slate-200 bg-indigo-50/50 font-semibold text-indigo-900 [&>tr]:last:border-b-0 dark:border-slate-800 dark:bg-indigo-950/20 dark:text-indigo-200",
 				className,
 			)}
 			data-slot="table-footer"
@@ -78,7 +80,7 @@ export function TableRow(props: TableRowProps): React.JSX.Element {
 	return (
 		<tr
 			className={cn(
-				"border-b border-slate-200 transition-colors hover:bg-slate-50 data-[state=selected]:bg-slate-100 dark:border-slate-800 dark:hover:bg-slate-800/50 dark:data-[state=selected]:bg-slate-800",
+				"border-b border-slate-100 transition-colors hover:bg-slate-50/80 data-[state=selected]:bg-indigo-50 dark:border-slate-800/60 dark:hover:bg-slate-800/40 dark:data-[state=selected]:bg-indigo-900/20",
 				className,
 			)}
 			data-slot="table-row"
@@ -95,7 +97,7 @@ export function TableHead(props: TableHeadProps): React.JSX.Element {
 	return (
 		<th
 			className={cn(
-				"h-12 px-4 text-left align-middle font-medium text-slate-500 dark:text-slate-400 has-[[role=checkbox]]:pr-0",
+				"h-14 px-6 text-left align-middle font-semibold text-slate-900 dark:text-slate-100 has-[[role=checkbox]]:pr-0",
 				className,
 			)}
 			data-slot="table-header"
@@ -111,7 +113,7 @@ export function TableCell(props: TableCellProps): React.JSX.Element {
 
 	return (
 		<td
-			className={cn("p-4 align-middle has-[[role=checkbox]]:pr-0", className)}
+			className={cn("p-6 align-middle has-[[role=checkbox]]:pr-0", className)}
 			data-slot="table-cell"
 			{...otherProps}
 		/>
@@ -126,7 +128,7 @@ export function TableCaption(props: TableCaptionProps): React.JSX.Element {
 	return (
 		<caption
 			className={cn(
-				"mt-4 text-sm text-slate-500 dark:text-slate-400",
+				"mt-4 mb-4 px-6 text-sm font-medium text-slate-500 dark:text-slate-400",
 				className,
 			)}
 			data-slot="table-caption"

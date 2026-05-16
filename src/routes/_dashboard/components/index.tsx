@@ -8,6 +8,9 @@ import {
 	TabsPanel,
 	TabsTab,
 } from "~/components/ui/tabs";
+import { OTPField, OTPFieldInput, OTPFieldSeparator } from "~/components/ui/otp-field";
+import { Minus } from "lucide-react";
+
 
 export const Route = createFileRoute("/_dashboard/components/")({
 	component: ComponentsPage,
@@ -92,7 +95,23 @@ function ComponentsPage() {
 					<TabsPanel value="seo">Some SEO content</TabsPanel>
 					<TabsPanel value="attachments">Some attachments content</TabsPanel>
 				</Tabs>
-			</section>
+      </section>
+      <section className="grid gap-8 mt-8">
+				<h2 className="font-medium text-2xl text-gray-950 dark:text-gray-50">
+				OTP Field
+        </h2>
+        <OTPField id="my-otp-field" length={6} aria-describedby="my-otp-field-description">
+				<OTPFieldInput />
+				<OTPFieldInput />
+				<OTPFieldInput />
+				<OTPFieldSeparator>
+				  <Minus />
+				</OTPFieldSeparator>
+				<OTPFieldInput />
+				<OTPFieldInput />
+				<OTPFieldInput />
+			</OTPField>
+      </section>
 		</main>
 	);
 }

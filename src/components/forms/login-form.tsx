@@ -9,23 +9,17 @@ import { insertAdminSession, setSessionCookie } from "~/auth/session";
 import { createSessionToken, hashToken } from "~/auth/utils";
 import { Button } from "~/components/ui/button";
 
+// Note: Ensure the `login` serverFn implementation remains exactly as you had it.
 const login = createServerFn()
 	.inputValidator(loginSchema)
 	.handler(async ({ data }) => {
 		const { email, password } = data;
-
 		try {
 			const admin = await getAdminByEmail(email);
-
-			if (!admin) {
-				throw new Error("Invalid email or password.");
-			}
+			if (!admin) throw new Error("Invalid email or password.");
 
 			const passwordVerified = verifyPassword(password, admin.password_hash);
-
-			if (!passwordVerified) {
-				throw new Error("Invalid email or password.");
-			}
+			if (!passwordVerified) throw new Error("Invalid email or password.");
 
 			const sessionToken = createSessionToken();
 			const expiresAt = new Date(Date.now() + 1000 * 60 * 60 * 24 * 30);
@@ -38,13 +32,12 @@ const login = createServerFn()
 			if (error instanceof Error && error.message === "Invalid email or password.") {
 				throw error;
 			}
-
 			console.error("[Server Error] Login handler failed:", error);
-			throw new Error("An unexpected server error occurred. Please try again later.");
+			throw new Error("An unexpected server error occurred.");
 		}
 	});
 
-export function LoginForm() {
+export function LoginForm(): React.JSX.Element {
 	const router = useRouter();
 	const [loginError, setLoginError] = useState<string>();
 
@@ -57,8 +50,8 @@ export function LoginForm() {
 		try {
 			await login({
 				data: {
-					email: email,
-					password: password,
+					email: email as string,
+					password: password as string,
 				},
 			});
 
@@ -74,49 +67,50 @@ export function LoginForm() {
 	};
 
 	return (
-		<Form className="grid gap-y-4" onSubmit={submitLogin}>
+		<Form className="grid gap-y-5" onSubmit={submitLogin}>
 			{loginError && (
-				<span className="text-sm text-red-500 dark:text-red-400">
+				<div className="rounded-lg bg-rose-50 p-3 text-sm font-medium text-rose-600 dark:bg-rose-500/10 dark:text-rose-400">
 					{loginError}
-				</span>
+				</div>
 			)}
 			<Field.Root className="grid gap-2">
-				<Field.Label className="text-[13px] text-slate-600 dark:text-slate-400">
+				<Field.Label className="text-sm font-semibold text-slate-700 dark:text-slate-300">
 					E-mail address
 				</Field.Label>
 				<Field.Control
-					className="h-10 rounded-md border border-slate-200 bg-slate-50 px-4 text-slate-900 transition-all focus-within:outline-none focus-within:ring-2 focus-within:ring-slate-400 focus-within:ring-offset-2 data-invalid:border-red-500 data-invalid:focus-within:ring-red-500 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50 dark:focus-within:ring-slate-600 dark:focus-within:ring-offset-slate-900 dark:data-invalid:border-red-500 dark:data-invalid:focus-within:ring-red-400 autofill:shadow-[inset_0_0_0px_1000px_var(--color-slate-200)] autofill:[-webkit-text-fill-color:var(--color-slate-800)] dark:autofill:shadow-[inset_0_0_0px_1000px_var(--color-slate-800)] dark:autofill:[-webkit-text-fill-color:var(--color-slate-200)]"
+					className="h-11 rounded-lg border border-slate-300 bg-white px-4 text-slate-900 transition-all focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:border-transparent data-invalid:border-rose-500 data-invalid:focus-within:ring-rose-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-50 dark:focus-within:ring-indigo-400 autofill:shadow-[inset_0_0_0px_1000px_var(--color-slate-50)] autofill:[-webkit-text-fill-color:var(--color-slate-900)] dark:autofill:shadow-[inset_0_0_0px_1000px_var(--color-slate-900)] dark:autofill:[-webkit-text-fill-color:var(--color-slate-100)]"
 					name="email"
 					type="email"
-					placeholder="E-mail address"
+					placeholder="admin@example.com"
 					autoComplete="email"
 					required
 				/>
 				<Field.Error
-					className="text-sm text-red-500 dark:text-red-400"
+					className="text-xs font-medium text-rose-500 dark:text-rose-400"
 					role="alert"
 				/>
 			</Field.Root>
 			<Field.Root className="grid gap-2">
-				<Field.Label className="text-[13px] text-slate-600 dark:text-slate-400">
-					Password
-				</Field.Label>
+				<div className="flex items-center justify-between">
+					<Field.Label className="text-sm font-semibold text-slate-700 dark:text-slate-300">
+						Password
+					</Field.Label>
+				</div>
 				<Field.Control
-					className="h-10 rounded-md border border-slate-200 bg-slate-50 px-4 text-slate-900 transition-all focus-within:outline-none focus-within:ring-2 focus-within:ring-slate-400 focus-within:ring-offset-2 data-invalid:border-red-500 data-invalid:focus-within:ring-red-500 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50 dark:focus-within:ring-slate-600 dark:focus-within:ring-offset-slate-900 dark:data-invalid:border-red-500 dark:data-invalid:focus-within:ring-red-400 autofill:shadow-[inset_0_0_0px_1000px_var(--color-slate-200)] autofill:[-webkit-text-fill-color:var(--color-slate-800)] dark:autofill:shadow-[inset_0_0_0px_1000px_var(--color-slate-800)] dark:autofill:[-webkit-text-fill-color:var(--color-slate-200)]"
+					className="h-11 rounded-lg border border-slate-300 bg-white px-4 text-slate-900 transition-all focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:border-transparent data-invalid:border-rose-500 data-invalid:focus-within:ring-rose-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-50 dark:focus-within:ring-indigo-400 autofill:shadow-[inset_0_0_0px_1000px_var(--color-slate-50)] autofill:[-webkit-text-fill-color:var(--color-slate-900)] dark:autofill:shadow-[inset_0_0_0px_1000px_var(--color-slate-900)] dark:autofill:[-webkit-text-fill-color:var(--color-slate-100)]"
 					name="password"
 					type="password"
-					placeholder="Password"
+					placeholder="••••••••"
 					autoComplete="current-password"
 					required
 				/>
-
 				<Field.Error
-					className="text-sm text-red-500 dark:text-red-400"
+					className="text-xs font-medium text-rose-500 dark:text-rose-400"
 					role="alert"
 				/>
 			</Field.Root>
-			<Button className="mt-4" type="submit" size="medium" variant="primary">
-				Log In
+			<Button className="mt-2 w-full" type="submit" size="lg" variant="primary">
+				Secure Log In
 			</Button>
 		</Form>
 	);
