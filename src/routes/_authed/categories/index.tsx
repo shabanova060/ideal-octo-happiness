@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/_dashboard/categories/")({
+export const Route = createFileRoute("/_authed/categories/")({
 	component: CategoriesPage,
 });
 

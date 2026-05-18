@@ -9,7 +9,6 @@ import { insertAdminSession, setSessionCookie } from "~/auth/session";
 import { createSessionToken, hashToken } from "~/auth/utils";
 import { Button } from "~/components/ui/button";
 
-// Note: Ensure the `login` serverFn implementation remains exactly as you had it.
 const login = createServerFn()
 	.inputValidator(loginSchema)
 	.handler(async ({ data }) => {
@@ -29,7 +28,10 @@ const login = createServerFn()
 
 			return { success: true };
 		} catch (error) {
-			if (error instanceof Error && error.message === "Invalid email or password.") {
+			if (
+				error instanceof Error &&
+				error.message === "Invalid email or password."
+			) {
 				throw error;
 			}
 			console.error("[Server Error] Login handler failed:", error);
@@ -50,8 +52,8 @@ export function LoginForm(): React.JSX.Element {
 		try {
 			await login({
 				data: {
-					email: email as string,
-					password: password as string,
+					email: email,
+					password: password,
 				},
 			});
 

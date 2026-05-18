@@ -35,6 +35,7 @@ export interface SessionData {
 	adminId: string;
 	expiresAt: Date;
 	twoFactorVerified: boolean;
+	avatarUrl: string;
 	email: string;
 	emailVerified: boolean;
 	hasTotp: boolean;
@@ -54,19 +55,20 @@ export async function verifySession(
 	tokenHash: string,
 ): Promise<SessionData | null> {
 	const rows = await Bun.sql<SessionData[]>`
-    SELECT
-      admin_sessions.token_hash AS "sessionId",
-      admin_sessions.admin_id AS "adminId",
-      admin_sessions.expires_at AS "expiresAt",
-      admin_sessions.two_factor_verified AS "twoFactorVerified",
-      admins.email,
-      admins.email_verified AS "emailVerified",
-      (admin_totp.admin_id IS NOT NULL) AS "hasTotp"
-    FROM admin_sessions
-    INNER JOIN admins ON admin_sessions.admin_id = admins.id
-    LEFT JOIN admin_totp ON admin_sessions.id = admin_totp.admin_id
-    WHERE admin_sessions.token_hash = ${tokenHash}
-  `;
+		SELECT
+			admin_sessions.token_hash AS "sessionId",
+			admin_sessions.admin_id AS "adminId",
+			admin_sessions.expires_at AS "expiresAt",
+			admin_sessions.two_factor_verified AS "twoFactorVerified",
+			admins.email,
+			admins.email_verified AS "emailVerified",
+			admins.avatar_url AS "avatarUrl",
+			(admin_totp.admin_id IS NOT NULL) AS "hasTotp"
+		FROM admin_sessions
+		INNER JOIN admins ON admin_sessions.admin_id = admins.id
+		LEFT JOIN admin_totp ON admin_sessions.admin_id = admin_totp.admin_id
+		WHERE admin_sessions.token_hash = ${tokenHash}
+	`;
 
 	if (rows.length === 0) {
 		return null;
@@ -82,10 +84,10 @@ export async function verifySession(
 		rows[0].expiresAt = newExpiresAt;
 
 		await Bun.sql`
-          UPDATE admin_sessions
-          SET expires_at = ${newExpiresAt.toISOString()}
-          WHERE token_hash = ${tokenHash}
-      `;
+			UPDATE admin_sessions
+			SET expires_at = ${newExpiresAt.toISOString()}
+			WHERE token_hash = ${tokenHash}
+		`;
 	}
 
 	return {
@@ -95,6 +97,7 @@ export async function verifySession(
 		twoFactorVerified: rows[0].twoFactorVerified,
 		email: rows[0].email,
 		emailVerified: rows[0].emailVerified,
+		avatarUrl: rows[0].avatarUrl,
 		hasTotp: rows[0].hasTotp,
 	};
 }
@@ -107,7 +110,7 @@ export async function insertAdminSession(
 	const expiresAtString = expiresAt.toISOString();
 
 	const result = await Bun.sql`
-    INSERT INTO admin_sessions (admin_id, token_hash, expires_at, two_factor_verified)
+    INSERT INTO admin_sessions (admin_id, token_hash, expires_at)
     VALUES (${adminId}, ${tokenHash}, ${expiresAtString})
     RETURNING admin_id, token_hash, expires_at, two_factor_verified
   `;

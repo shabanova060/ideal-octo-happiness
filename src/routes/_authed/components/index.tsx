@@ -15,7 +15,7 @@ import {
 	TabsTab,
 } from "~/components/ui/tabs";
 
-export const Route = createFileRoute("/_dashboard/components/")({
+export const Route = createFileRoute("/_authed/components/")({
 	component: ComponentsPage,
 });
 

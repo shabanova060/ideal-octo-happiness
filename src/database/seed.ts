@@ -23,6 +23,7 @@ export async function seedDatabase() {
 	await Bun.sql`
     CREATE TABLE admins (
       id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+      avatar_url TEXT DEFAULT NULL,
       email VARCHAR(254) NOT NULL UNIQUE,
       password_hash TEXT NOT NULL,
       email_verified BOOLEAN DEFAULT FALSE,
@@ -40,6 +41,13 @@ export async function seedDatabase() {
       two_factor_verified BOOLEAN NOT NULL DEFAULT FALSE,
       created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
     )
+  `;
+
+	await Bun.sql`
+    CREATE TABLE admin_totp (
+        admin_id UUID PRIMARY KEY REFERENCES admins(id) ON DELETE CASCADE,
+        secret TEXT NOT NULL
+    );
   `;
 
 	// 3. Trigger for updated_at
@@ -61,14 +69,15 @@ export async function seedDatabase() {
   `;
 
 	// 4. Seed Admin User
+	const avatarUrl = "/avatars/drow-avatar.webp";
 	const adminEmail = "admin@example.com";
 	const hashedPassword = await hashPassword("your-secure-password");
 	const emailVerified = true;
 	const recoveryCode = createRecoveryCode();
 
 	await Bun.sql`
-    INSERT INTO admins (email, password_hash, email_verified, recovery_code)
-    VALUES (${adminEmail}, ${hashedPassword}, ${emailVerified}, ${recoveryCode})
+    INSERT INTO admins (avatar_url, email, password_hash, email_verified, recovery_code)
+    VALUES (${avatarUrl}, ${adminEmail}, ${hashedPassword}, ${emailVerified}, ${recoveryCode})
   `;
 
 	console.log("Database reset and admin user seeded successfully.");

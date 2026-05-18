@@ -28,7 +28,7 @@ function LoginPage(): React.JSX.Element {
 					<img
 						src="/backgrounds/armenia.webp"
 						alt="A cinematic portrait"
-						className="absolute inset-0 h-full w-full -scale-x-100 object-cover"
+						className="absolute inset-0 h-full w-full object-cover"
 					/>
 					<div className="absolute inset-0 bg-linear-to-t from-slate-950/90 via-slate-950/20 to-transparent" />
 					<figcaption className="absolute bottom-8 left-8 z-50 rounded-full bg-white/10 px-5 py-2.5 text-xs font-semibold tracking-wide text-white backdrop-blur-md border border-white/20 shadow-xl">

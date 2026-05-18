@@ -9,19 +9,19 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as DashboardRouteRouteImport } from './routes/_dashboard/route'
+import { Route as AuthedRouteRouteImport } from './routes/_authed/route'
 import { Route as LoginIndexRouteImport } from './routes/login/index'
-import { Route as DashboardIndexRouteImport } from './routes/_dashboard/index'
-import { Route as DashboardProductsIndexRouteImport } from './routes/_dashboard/products/index'
-import { Route as DashboardComponentsIndexRouteImport } from './routes/_dashboard/components/index'
-import { Route as DashboardCategoriesIndexRouteImport } from './routes/_dashboard/categories/index'
-import { Route as DashboardBrandsIndexRouteImport } from './routes/_dashboard/brands/index'
-import { Route as DashboardProductsProductIdRouteImport } from './routes/_dashboard/products/$productId'
-import { Route as DashboardCategoriesCategoryIdRouteImport } from './routes/_dashboard/categories/$categoryId'
-import { Route as DashboardBrandsBrandIdRouteImport } from './routes/_dashboard/brands/$brandId'
+import { Route as AuthedIndexRouteImport } from './routes/_authed/index'
+import { Route as AuthedProductsIndexRouteImport } from './routes/_authed/products/index'
+import { Route as AuthedComponentsIndexRouteImport } from './routes/_authed/components/index'
+import { Route as AuthedCategoriesIndexRouteImport } from './routes/_authed/categories/index'
+import { Route as AuthedBrandsIndexRouteImport } from './routes/_authed/brands/index'
+import { Route as AuthedProductsProductIdRouteImport } from './routes/_authed/products/$productId'
+import { Route as AuthedCategoriesCategoryIdRouteImport } from './routes/_authed/categories/$categoryId'
+import { Route as AuthedBrandsBrandIdRouteImport } from './routes/_authed/brands/$brandId'
 
-const DashboardRouteRoute = DashboardRouteRouteImport.update({
-  id: '/_dashboard',
+const AuthedRouteRoute = AuthedRouteRouteImport.update({
+  id: '/_authed',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginIndexRoute = LoginIndexRouteImport.update({
@@ -29,85 +29,82 @@ const LoginIndexRoute = LoginIndexRouteImport.update({
   path: '/login/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DashboardIndexRoute = DashboardIndexRouteImport.update({
+const AuthedIndexRoute = AuthedIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => DashboardRouteRoute,
+  getParentRoute: () => AuthedRouteRoute,
 } as any)
-const DashboardProductsIndexRoute = DashboardProductsIndexRouteImport.update({
+const AuthedProductsIndexRoute = AuthedProductsIndexRouteImport.update({
   id: '/products/',
   path: '/products/',
-  getParentRoute: () => DashboardRouteRoute,
+  getParentRoute: () => AuthedRouteRoute,
 } as any)
-const DashboardComponentsIndexRoute =
-  DashboardComponentsIndexRouteImport.update({
-    id: '/components/',
-    path: '/components/',
-    getParentRoute: () => DashboardRouteRoute,
-  } as any)
-const DashboardCategoriesIndexRoute =
-  DashboardCategoriesIndexRouteImport.update({
-    id: '/categories/',
-    path: '/categories/',
-    getParentRoute: () => DashboardRouteRoute,
-  } as any)
-const DashboardBrandsIndexRoute = DashboardBrandsIndexRouteImport.update({
+const AuthedComponentsIndexRoute = AuthedComponentsIndexRouteImport.update({
+  id: '/components/',
+  path: '/components/',
+  getParentRoute: () => AuthedRouteRoute,
+} as any)
+const AuthedCategoriesIndexRoute = AuthedCategoriesIndexRouteImport.update({
+  id: '/categories/',
+  path: '/categories/',
+  getParentRoute: () => AuthedRouteRoute,
+} as any)
+const AuthedBrandsIndexRoute = AuthedBrandsIndexRouteImport.update({
   id: '/brands/',
   path: '/brands/',
-  getParentRoute: () => DashboardRouteRoute,
+  getParentRoute: () => AuthedRouteRoute,
 } as any)
-const DashboardProductsProductIdRoute =
-  DashboardProductsProductIdRouteImport.update({
-    id: '/products/$productId',
-    path: '/products/$productId',
-    getParentRoute: () => DashboardRouteRoute,
-  } as any)
-const DashboardCategoriesCategoryIdRoute =
-  DashboardCategoriesCategoryIdRouteImport.update({
+const AuthedProductsProductIdRoute = AuthedProductsProductIdRouteImport.update({
+  id: '/products/$productId',
+  path: '/products/$productId',
+  getParentRoute: () => AuthedRouteRoute,
+} as any)
+const AuthedCategoriesCategoryIdRoute =
+  AuthedCategoriesCategoryIdRouteImport.update({
     id: '/categories/$categoryId',
     path: '/categories/$categoryId',
-    getParentRoute: () => DashboardRouteRoute,
+    getParentRoute: () => AuthedRouteRoute,
   } as any)
-const DashboardBrandsBrandIdRoute = DashboardBrandsBrandIdRouteImport.update({
+const AuthedBrandsBrandIdRoute = AuthedBrandsBrandIdRouteImport.update({
   id: '/brands/$brandId',
   path: '/brands/$brandId',
-  getParentRoute: () => DashboardRouteRoute,
+  getParentRoute: () => AuthedRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof DashboardIndexRoute
+  '/': typeof AuthedIndexRoute
   '/login/': typeof LoginIndexRoute
-  '/brands/$brandId': typeof DashboardBrandsBrandIdRoute
-  '/categories/$categoryId': typeof DashboardCategoriesCategoryIdRoute
-  '/products/$productId': typeof DashboardProductsProductIdRoute
-  '/brands/': typeof DashboardBrandsIndexRoute
-  '/categories/': typeof DashboardCategoriesIndexRoute
-  '/components/': typeof DashboardComponentsIndexRoute
-  '/products/': typeof DashboardProductsIndexRoute
+  '/brands/$brandId': typeof AuthedBrandsBrandIdRoute
+  '/categories/$categoryId': typeof AuthedCategoriesCategoryIdRoute
+  '/products/$productId': typeof AuthedProductsProductIdRoute
+  '/brands/': typeof AuthedBrandsIndexRoute
+  '/categories/': typeof AuthedCategoriesIndexRoute
+  '/components/': typeof AuthedComponentsIndexRoute
+  '/products/': typeof AuthedProductsIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof DashboardIndexRoute
+  '/': typeof AuthedIndexRoute
   '/login': typeof LoginIndexRoute
-  '/brands/$brandId': typeof DashboardBrandsBrandIdRoute
-  '/categories/$categoryId': typeof DashboardCategoriesCategoryIdRoute
-  '/products/$productId': typeof DashboardProductsProductIdRoute
-  '/brands': typeof DashboardBrandsIndexRoute
-  '/categories': typeof DashboardCategoriesIndexRoute
-  '/components': typeof DashboardComponentsIndexRoute
-  '/products': typeof DashboardProductsIndexRoute
+  '/brands/$brandId': typeof AuthedBrandsBrandIdRoute
+  '/categories/$categoryId': typeof AuthedCategoriesCategoryIdRoute
+  '/products/$productId': typeof AuthedProductsProductIdRoute
+  '/brands': typeof AuthedBrandsIndexRoute
+  '/categories': typeof AuthedCategoriesIndexRoute
+  '/components': typeof AuthedComponentsIndexRoute
+  '/products': typeof AuthedProductsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/_dashboard': typeof DashboardRouteRouteWithChildren
-  '/_dashboard/': typeof DashboardIndexRoute
+  '/_authed': typeof AuthedRouteRouteWithChildren
+  '/_authed/': typeof AuthedIndexRoute
   '/login/': typeof LoginIndexRoute
-  '/_dashboard/brands/$brandId': typeof DashboardBrandsBrandIdRoute
-  '/_dashboard/categories/$categoryId': typeof DashboardCategoriesCategoryIdRoute
-  '/_dashboard/products/$productId': typeof DashboardProductsProductIdRoute
-  '/_dashboard/brands/': typeof DashboardBrandsIndexRoute
-  '/_dashboard/categories/': typeof DashboardCategoriesIndexRoute
-  '/_dashboard/components/': typeof DashboardComponentsIndexRoute
-  '/_dashboard/products/': typeof DashboardProductsIndexRoute
+  '/_authed/brands/$brandId': typeof AuthedBrandsBrandIdRoute
+  '/_authed/categories/$categoryId': typeof AuthedCategoriesCategoryIdRoute
+  '/_authed/products/$productId': typeof AuthedProductsProductIdRoute
+  '/_authed/brands/': typeof AuthedBrandsIndexRoute
+  '/_authed/categories/': typeof AuthedCategoriesIndexRoute
+  '/_authed/components/': typeof AuthedComponentsIndexRoute
+  '/_authed/products/': typeof AuthedProductsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -134,30 +131,30 @@ export interface FileRouteTypes {
     | '/products'
   id:
     | '__root__'
-    | '/_dashboard'
-    | '/_dashboard/'
+    | '/_authed'
+    | '/_authed/'
     | '/login/'
-    | '/_dashboard/brands/$brandId'
-    | '/_dashboard/categories/$categoryId'
-    | '/_dashboard/products/$productId'
-    | '/_dashboard/brands/'
-    | '/_dashboard/categories/'
-    | '/_dashboard/components/'
-    | '/_dashboard/products/'
+    | '/_authed/brands/$brandId'
+    | '/_authed/categories/$categoryId'
+    | '/_authed/products/$productId'
+    | '/_authed/brands/'
+    | '/_authed/categories/'
+    | '/_authed/components/'
+    | '/_authed/products/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  DashboardRouteRoute: typeof DashboardRouteRouteWithChildren
+  AuthedRouteRoute: typeof AuthedRouteRouteWithChildren
   LoginIndexRoute: typeof LoginIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/_dashboard': {
-      id: '/_dashboard'
+    '/_authed': {
+      id: '/_authed'
       path: ''
       fullPath: '/'
-      preLoaderRoute: typeof DashboardRouteRouteImport
+      preLoaderRoute: typeof AuthedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login/': {
@@ -167,93 +164,93 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_dashboard/': {
-      id: '/_dashboard/'
+    '/_authed/': {
+      id: '/_authed/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof DashboardIndexRouteImport
-      parentRoute: typeof DashboardRouteRoute
+      preLoaderRoute: typeof AuthedIndexRouteImport
+      parentRoute: typeof AuthedRouteRoute
     }
-    '/_dashboard/products/': {
-      id: '/_dashboard/products/'
+    '/_authed/products/': {
+      id: '/_authed/products/'
       path: '/products'
       fullPath: '/products/'
-      preLoaderRoute: typeof DashboardProductsIndexRouteImport
-      parentRoute: typeof DashboardRouteRoute
+      preLoaderRoute: typeof AuthedProductsIndexRouteImport
+      parentRoute: typeof AuthedRouteRoute
     }
-    '/_dashboard/components/': {
-      id: '/_dashboard/components/'
+    '/_authed/components/': {
+      id: '/_authed/components/'
       path: '/components'
       fullPath: '/components/'
-      preLoaderRoute: typeof DashboardComponentsIndexRouteImport
-      parentRoute: typeof DashboardRouteRoute
+      preLoaderRoute: typeof AuthedComponentsIndexRouteImport
+      parentRoute: typeof AuthedRouteRoute
     }
-    '/_dashboard/categories/': {
-      id: '/_dashboard/categories/'
+    '/_authed/categories/': {
+      id: '/_authed/categories/'
       path: '/categories'
       fullPath: '/categories/'
-      preLoaderRoute: typeof DashboardCategoriesIndexRouteImport
-      parentRoute: typeof DashboardRouteRoute
+      preLoaderRoute: typeof AuthedCategoriesIndexRouteImport
+      parentRoute: typeof AuthedRouteRoute
     }
-    '/_dashboard/brands/': {
-      id: '/_dashboard/brands/'
+    '/_authed/brands/': {
+      id: '/_authed/brands/'
       path: '/brands'
       fullPath: '/brands/'
-      preLoaderRoute: typeof DashboardBrandsIndexRouteImport
-      parentRoute: typeof DashboardRouteRoute
+      preLoaderRoute: typeof AuthedBrandsIndexRouteImport
+      parentRoute: typeof AuthedRouteRoute
     }
-    '/_dashboard/products/$productId': {
-      id: '/_dashboard/products/$productId'
+    '/_authed/products/$productId': {
+      id: '/_authed/products/$productId'
       path: '/products/$productId'
       fullPath: '/products/$productId'
-      preLoaderRoute: typeof DashboardProductsProductIdRouteImport
-      parentRoute: typeof DashboardRouteRoute
+      preLoaderRoute: typeof AuthedProductsProductIdRouteImport
+      parentRoute: typeof AuthedRouteRoute
     }
-    '/_dashboard/categories/$categoryId': {
-      id: '/_dashboard/categories/$categoryId'
+    '/_authed/categories/$categoryId': {
+      id: '/_authed/categories/$categoryId'
       path: '/categories/$categoryId'
       fullPath: '/categories/$categoryId'
-      preLoaderRoute: typeof DashboardCategoriesCategoryIdRouteImport
-      parentRoute: typeof DashboardRouteRoute
+      preLoaderRoute: typeof AuthedCategoriesCategoryIdRouteImport
+      parentRoute: typeof AuthedRouteRoute
     }
-    '/_dashboard/brands/$brandId': {
-      id: '/_dashboard/brands/$brandId'
+    '/_authed/brands/$brandId': {
+      id: '/_authed/brands/$brandId'
       path: '/brands/$brandId'
       fullPath: '/brands/$brandId'
-      preLoaderRoute: typeof DashboardBrandsBrandIdRouteImport
-      parentRoute: typeof DashboardRouteRoute
+      preLoaderRoute: typeof AuthedBrandsBrandIdRouteImport
+      parentRoute: typeof AuthedRouteRoute
     }
   }
 }
 
-interface DashboardRouteRouteChildren {
-  DashboardIndexRoute: typeof DashboardIndexRoute
-  DashboardBrandsBrandIdRoute: typeof DashboardBrandsBrandIdRoute
-  DashboardCategoriesCategoryIdRoute: typeof DashboardCategoriesCategoryIdRoute
-  DashboardProductsProductIdRoute: typeof DashboardProductsProductIdRoute
-  DashboardBrandsIndexRoute: typeof DashboardBrandsIndexRoute
-  DashboardCategoriesIndexRoute: typeof DashboardCategoriesIndexRoute
-  DashboardComponentsIndexRoute: typeof DashboardComponentsIndexRoute
-  DashboardProductsIndexRoute: typeof DashboardProductsIndexRoute
+interface AuthedRouteRouteChildren {
+  AuthedIndexRoute: typeof AuthedIndexRoute
+  AuthedBrandsBrandIdRoute: typeof AuthedBrandsBrandIdRoute
+  AuthedCategoriesCategoryIdRoute: typeof AuthedCategoriesCategoryIdRoute
+  AuthedProductsProductIdRoute: typeof AuthedProductsProductIdRoute
+  AuthedBrandsIndexRoute: typeof AuthedBrandsIndexRoute
+  AuthedCategoriesIndexRoute: typeof AuthedCategoriesIndexRoute
+  AuthedComponentsIndexRoute: typeof AuthedComponentsIndexRoute
+  AuthedProductsIndexRoute: typeof AuthedProductsIndexRoute
 }
 
-const DashboardRouteRouteChildren: DashboardRouteRouteChildren = {
-  DashboardIndexRoute: DashboardIndexRoute,
-  DashboardBrandsBrandIdRoute: DashboardBrandsBrandIdRoute,
-  DashboardCategoriesCategoryIdRoute: DashboardCategoriesCategoryIdRoute,
-  DashboardProductsProductIdRoute: DashboardProductsProductIdRoute,
-  DashboardBrandsIndexRoute: DashboardBrandsIndexRoute,
-  DashboardCategoriesIndexRoute: DashboardCategoriesIndexRoute,
-  DashboardComponentsIndexRoute: DashboardComponentsIndexRoute,
-  DashboardProductsIndexRoute: DashboardProductsIndexRoute,
+const AuthedRouteRouteChildren: AuthedRouteRouteChildren = {
+  AuthedIndexRoute: AuthedIndexRoute,
+  AuthedBrandsBrandIdRoute: AuthedBrandsBrandIdRoute,
+  AuthedCategoriesCategoryIdRoute: AuthedCategoriesCategoryIdRoute,
+  AuthedProductsProductIdRoute: AuthedProductsProductIdRoute,
+  AuthedBrandsIndexRoute: AuthedBrandsIndexRoute,
+  AuthedCategoriesIndexRoute: AuthedCategoriesIndexRoute,
+  AuthedComponentsIndexRoute: AuthedComponentsIndexRoute,
+  AuthedProductsIndexRoute: AuthedProductsIndexRoute,
 }
 
-const DashboardRouteRouteWithChildren = DashboardRouteRoute._addFileChildren(
-  DashboardRouteRouteChildren,
+const AuthedRouteRouteWithChildren = AuthedRouteRoute._addFileChildren(
+  AuthedRouteRouteChildren,
 )
 
 const rootRouteChildren: RootRouteChildren = {
-  DashboardRouteRoute: DashboardRouteRouteWithChildren,
+  AuthedRouteRoute: AuthedRouteRouteWithChildren,
   LoginIndexRoute: LoginIndexRoute,
 }
 export const routeTree = rootRouteImport
